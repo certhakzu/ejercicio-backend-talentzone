@@ -13,7 +13,8 @@ spring:
     include: null
   data:
     mongodb:
-      uri: "mongodb://localhost:27017/test"
+      uri: "mongodb+srv://certhakzu:mongoPrueba123@cluster0-prueba.kuwmb.mongodb.net/?retryWrites=true&w=majority"
+      database: "demoTourOfFrance"
 management:
   endpoints:
     web:
