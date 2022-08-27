@@ -13,8 +13,9 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class CyclistRouterRest {
 @Bean
 public RouterFunction<ServerResponse> routerFunction(CyclistHandler cyclistHandler) {
-    return route(POST("/api/cyclist/createcyclist"), cyclistHandler::listenPOSTCreateCyclistUseCase)
-            .andRoute(GET("/api/cyclist/findbyid/{id}"), cyclistHandler::listenGETFindCyclistByIdUseCase);
+    return route(POST("/api/cyclist/create"), cyclistHandler::listenPOSTCreateCyclistUseCase)
+            .andRoute(GET("/api/cyclist/findbyid/{id}"), cyclistHandler::listenGETFindCyclistByIdUseCase)
+            .andRoute(GET("/api/cyclist/findall"), cyclistHandler::listenGETFindAllCyclistUseCase);
 
     }
 }

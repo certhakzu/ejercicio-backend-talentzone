@@ -2,6 +2,7 @@ package co.com.sofka.api;
 
 import co.com.sofka.model.cyclist.Cyclist;
 import co.com.sofka.usecase.createcyclist.CreateCyclistUseCase;
+import co.com.sofka.usecase.findallcyclist.FindAllCyclistUseCase;
 import co.com.sofka.usecase.findcyclistbyid.FindCyclistByIdUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -16,6 +17,7 @@ public class CyclistHandler {
 
     private final CreateCyclistUseCase createCyclistUseCase;
     private final FindCyclistByIdUseCase findCyclistByIdUseCase;
+    private final FindAllCyclistUseCase findAllCyclistUseCase;
 
     public Mono<ServerResponse> listenPOSTCreateCyclistUseCase(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(Cyclist.class)
@@ -31,5 +33,11 @@ public class CyclistHandler {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(findCyclistByIdUseCase.findCyclistById(id), Cyclist.class);
+    }
+
+    public Mono<ServerResponse> listenGETFindAllCyclistUseCase(ServerRequest serverRequest){
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findAllCyclistUseCase.findAllCyclist(), Cyclist.class);
     }
 }
