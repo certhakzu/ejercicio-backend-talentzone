@@ -1,15 +1,14 @@
-package co.com.sofka.usecase.createteam;
+package co.com.sofka.usecase.team.deleteteam;
 
-import co.com.sofka.model.team.Team;
 import co.com.sofka.model.team.gateways.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
-public class CreateTeamUseCase {
+public class DeleteTeamUseCase {
     private final TeamRepository teamRepository;
 
-    public Mono<Team> createTeam(Team team){
-        return teamRepository.save(team);
+    public Mono<Void> deleteTeam(String id){
+        return teamRepository.deleteById(id);
     }
 }

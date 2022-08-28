@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.updateteam;
+package co.com.sofka.usecase.team.updateteam;
 
 import co.com.sofka.model.team.Team;
 import co.com.sofka.model.team.gateways.TeamRepository;

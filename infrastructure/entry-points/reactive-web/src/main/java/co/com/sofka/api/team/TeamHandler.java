@@ -1,11 +1,11 @@
 package co.com.sofka.api.team;
 
 import co.com.sofka.model.team.Team;
-import co.com.sofka.usecase.createteam.CreateTeamUseCase;
-import co.com.sofka.usecase.deleteteam.DeleteTeamUseCase;
-import co.com.sofka.usecase.findallteam.FindAllTeamUseCase;
-import co.com.sofka.usecase.findteambyid.FindTeamByIdUseCase;
-import co.com.sofka.usecase.updateteam.UpdateTeamUseCase;
+import co.com.sofka.usecase.team.createteam.CreateTeamUseCase;
+import co.com.sofka.usecase.team.deleteteam.DeleteTeamUseCase;
+import co.com.sofka.usecase.team.findallteam.FindAllTeamUseCase;
+import co.com.sofka.usecase.team.findteambyid.FindTeamByIdUseCase;
+import co.com.sofka.usecase.team.updateteam.UpdateTeamUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

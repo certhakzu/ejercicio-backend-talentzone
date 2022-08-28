@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.findallteam;
+package co.com.sofka.usecase.team.findallteam;
 
 import co.com.sofka.model.team.Team;
 import co.com.sofka.model.team.gateways.TeamRepository;
