@@ -2,6 +2,7 @@ package co.com.sofka.api;
 
 import co.com.sofka.model.cyclist.Cyclist;
 import co.com.sofka.usecase.createcyclist.CreateCyclistUseCase;
+import co.com.sofka.usecase.deletecyclist.DeleteCyclistUseCase;
 import co.com.sofka.usecase.findallcyclist.FindAllCyclistUseCase;
 import co.com.sofka.usecase.findcyclistbyid.FindCyclistByIdUseCase;
 import co.com.sofka.usecase.updatecyclist.UpdateCyclistUseCase;
@@ -20,6 +21,7 @@ public class CyclistHandler {
     private final FindCyclistByIdUseCase findCyclistByIdUseCase;
     private final FindAllCyclistUseCase findAllCyclistUseCase;
     private final UpdateCyclistUseCase updateCyclistUseCase;
+    private final DeleteCyclistUseCase deleteCyclistUseCase;
 
 
     public Mono<ServerResponse> listenPOSTCreateCyclistUseCase(ServerRequest serverRequest) {
@@ -50,5 +52,12 @@ public class CyclistHandler {
                 .flatMap(cyclist -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(updateCyclistUseCase.updateCyclist(id, cyclist), Cyclist.class));
+    }
+
+    public Mono<ServerResponse> listenDELETEDeleteCyclistUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(deleteCyclistUseCase.deleteCyclist(id), Cyclist.class);
     }
 }
