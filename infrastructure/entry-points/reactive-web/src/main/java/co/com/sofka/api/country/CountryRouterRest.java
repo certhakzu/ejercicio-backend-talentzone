@@ -16,7 +16,7 @@ public RouterFunction<ServerResponse> CountryRouterFunction(CountryHandler count
     return route(POST("/api/country/create"), countryHandler::listenPOSTCreateCountryUseCase)
             .andRoute(DELETE("/api/country/delete/{id}"), countryHandler::listenDELETEDeleteCountryUseCase)
             .andRoute(PUT("/api/country/update/{id}"), countryHandler::listenPUTUpdateCOuntryUSeCase)
-            .andRoute(GET("/api/country/findall"), countryHandler::listenGETFindAllCountryUseCase)
+            .andRoute(GET("/api/country/findall"), countryHandler::listenGETFindAllCountriesUseCase)
             .andRoute(GET("/api/country/findbyid/{id}"), countryHandler::listenGETFindCountryByIdUseCase);
     }
 }

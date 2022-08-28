@@ -3,7 +3,7 @@ package co.com.sofka.api.country;
 import co.com.sofka.model.country.Country;
 import co.com.sofka.usecase.country.createcountry.CreateCountryUseCase;
 import co.com.sofka.usecase.country.deletecountry.DeleteCountryUseCase;
-import co.com.sofka.usecase.country.findallcountry.FindAllCountryUseCase;
+import co.com.sofka.usecase.country.findallcountries.FindAllCountriesUseCase;
 import co.com.sofka.usecase.country.findcountrybyid.FindCountryByIdUseCase;
 import co.com.sofka.usecase.country.updatecountry.UpdateCountryUseCase;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class CountryHandler {
     private final CreateCountryUseCase createCountryUseCase;
     private final DeleteCountryUseCase deleteCountryUseCase;
     private final UpdateCountryUseCase updateCountryUseCase;
-    private final FindAllCountryUseCase findAllCountryUseCase;
+    private final FindAllCountriesUseCase findAllCountriesUseCase;
     private final FindCountryByIdUseCase findCountryByIdUseCase;
 
     public Mono<ServerResponse> listenPOSTCreateCountryUseCase(ServerRequest serverRequest) {
@@ -45,10 +45,10 @@ public class CountryHandler {
                         .body(updateCountryUseCase.updateCountry(id, country), Country.class));
     }
 
-    public Mono<ServerResponse> listenGETFindAllCountryUseCase(ServerRequest serverRequest){
+    public Mono<ServerResponse> listenGETFindAllCountriesUseCase(ServerRequest serverRequest){
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(findAllCountryUseCase.findAllCountry(), Country.class);
+                .body(findAllCountriesUseCase.findAllCountries(), Country.class);
     }
 
     public Mono<ServerResponse> listenGETFindCountryByIdUseCase(ServerRequest serverRequest){
