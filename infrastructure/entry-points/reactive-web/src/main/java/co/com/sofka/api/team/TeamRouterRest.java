@@ -15,6 +15,7 @@ public class TeamRouterRest {
 public RouterFunction<ServerResponse> TeamRouterFunction(TeamHandler teamHandler) {
     return route(POST("/api/team/create"), teamHandler::listenPOSTCreateTeamUseCase)
             .andRoute(DELETE("/api/team/delete/{id}"), teamHandler::listenDELETEDeleteTeamUseCase)
-            .andRoute(PUT("/api/team/update/{id}"), teamHandler::listenPUTUpdateTeamUseCase);
+            .andRoute(PUT("/api/team/update/{id}"), teamHandler::listenPUTUpdateTeamUseCase)
+            .andRoute(GET("/api/team/findall"), teamHandler::listenGETFindAllTeamsUseCase);
     }
 }

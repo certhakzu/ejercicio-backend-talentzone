@@ -3,6 +3,8 @@ package co.com.sofka.api.team;
 import co.com.sofka.model.team.Team;
 import co.com.sofka.usecase.createteam.CreateTeamUseCase;
 import co.com.sofka.usecase.deleteteam.DeleteTeamUseCase;
+import co.com.sofka.usecase.findallteam.FindAllTeamUseCase;
+import co.com.sofka.usecase.findteambyid.FindTeamByIdUseCase;
 import co.com.sofka.usecase.updateteam.UpdateTeamUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -18,6 +20,8 @@ public class TeamHandler {
     private final CreateTeamUseCase createTeamUseCase;
     private final DeleteTeamUseCase deleteTeamUseCase;
     private final UpdateTeamUseCase updateTeamUseCase;
+    private final FindAllTeamUseCase findAllTeamUseCase;
+    private final FindTeamByIdUseCase findTeamByIdUseCase;
 
     public Mono<ServerResponse> listenPOSTCreateTeamUseCase(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(Team.class)
@@ -39,5 +43,18 @@ public class TeamHandler {
                 .flatMap(team -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(updateTeamUseCase.updateTeam(id, team), Team.class));
+    }
+
+    public Mono<ServerResponse> listenGETFindAllTeamsUseCase(ServerRequest serverRequest){
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findAllTeamUseCase.findAllTeams(), Team.class);
+    }
+
+    public Mono<ServerResponse> listenGETFindTeamByIdUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findTeamByIdUseCase.findTeamById(id), Team.class);
     }
 }
