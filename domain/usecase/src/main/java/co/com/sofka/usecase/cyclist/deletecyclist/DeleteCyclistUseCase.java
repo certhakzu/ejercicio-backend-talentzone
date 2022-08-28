@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.deletecyclist;
+package co.com.sofka.usecase.cyclist.deletecyclist;
 
 import co.com.sofka.model.cyclist.gateways.CyclistRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,5 @@
-package co.com.sofka.mongo;
+package co.com.sofka.mongo.team;
 
-import co.com.sofka.model.cyclist.Name;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,16 +7,18 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class CyclistDocument {
+public class TeamDocument {
     @Id
     private String id;
-    private Name fullName;
-    private Integer competitorNumber;
-    private String idTeam;
+    private String name;
+    private String teamCode;
     private String idCountry;
+    private List<String> idsCyclists;
 }

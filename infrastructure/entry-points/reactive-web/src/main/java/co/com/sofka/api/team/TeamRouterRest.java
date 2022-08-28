@@ -1,0 +1,18 @@
+package co.com.sofka.api.team;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
+
+
+@Configuration
+public class TeamRouterRest {
+@Bean
+public RouterFunction<ServerResponse> TeamRouterFunction(TeamHandler teamHandler) {
+    return route(POST("/api/team/create"), teamHandler::listenPOSTCreateTeamUseCase);
+    }
+}

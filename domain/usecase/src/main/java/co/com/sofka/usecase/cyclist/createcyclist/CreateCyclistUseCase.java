@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.updatecyclist;
+package co.com.sofka.usecase.cyclist.createcyclist;
 
 import co.com.sofka.model.cyclist.Cyclist;
 import co.com.sofka.model.cyclist.gateways.CyclistRepository;
@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
-public class UpdateCyclistUseCase {
+public class CreateCyclistUseCase {
     private final CyclistRepository cyclistRepository;
 
-    public Mono<Cyclist> updateCyclist(String id, Cyclist cyclist){
-        return cyclistRepository.update(id, cyclist);
+    public Mono<Cyclist> createCyclist(Cyclist cyclist){
+        return cyclistRepository.save(cyclist);
     }
 }

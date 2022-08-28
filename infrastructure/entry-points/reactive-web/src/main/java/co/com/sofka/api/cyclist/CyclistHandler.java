@@ -1,11 +1,11 @@
-package co.com.sofka.api;
+package co.com.sofka.api.cyclist;
 
 import co.com.sofka.model.cyclist.Cyclist;
-import co.com.sofka.usecase.createcyclist.CreateCyclistUseCase;
-import co.com.sofka.usecase.deletecyclist.DeleteCyclistUseCase;
-import co.com.sofka.usecase.findallcyclist.FindAllCyclistUseCase;
-import co.com.sofka.usecase.findcyclistbyid.FindCyclistByIdUseCase;
-import co.com.sofka.usecase.updatecyclist.UpdateCyclistUseCase;
+import co.com.sofka.usecase.cyclist.createcyclist.CreateCyclistUseCase;
+import co.com.sofka.usecase.cyclist.deletecyclist.DeleteCyclistUseCase;
+import co.com.sofka.usecase.cyclist.findallcyclist.FindAllCyclistUseCase;
+import co.com.sofka.usecase.cyclist.findcyclistbyid.FindCyclistByIdUseCase;
+import co.com.sofka.usecase.cyclist.updatecyclist.UpdateCyclistUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
