@@ -13,6 +13,8 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class TeamRouterRest {
 @Bean
 public RouterFunction<ServerResponse> TeamRouterFunction(TeamHandler teamHandler) {
-    return route(POST("/api/team/create"), teamHandler::listenPOSTCreateTeamUseCase);
+    return route(POST("/api/team/create"), teamHandler::listenPOSTCreateTeamUseCase)
+            .andRoute(DELETE("/api/team/delete/{id}"), teamHandler::listenDELETEDeleteTeamUseCase)
+            .andRoute(PUT("/api/team/update/{id}"), teamHandler::listenPUTUpdateTeamUseCase);
     }
 }
