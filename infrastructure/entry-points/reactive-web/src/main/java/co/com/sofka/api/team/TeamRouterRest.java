@@ -17,6 +17,7 @@ public RouterFunction<ServerResponse> TeamRouterFunction(TeamHandler teamHandler
             .andRoute(DELETE("/api/team/delete/{id}"), teamHandler::listenDELETEDeleteTeamUseCase)
             .andRoute(PUT("/api/team/update/{id}"), teamHandler::listenPUTUpdateTeamUseCase)
             .andRoute(GET("/api/team/findall"), teamHandler::listenGETFindAllTeamsUseCase)
-            .andRoute(GET("/api/team/findbyid/{id}"), teamHandler::listenGETFindTeamByIdUseCase);
+            .andRoute(GET("/api/team/findbyid/{id}"), teamHandler::listenGETFindTeamByIdUseCase)
+            .andRoute(GET("/api/team/findteamsbycountry/{id}"), teamHandler::listenGETFindTeamsByCountryIdUseCase);
     }
 }

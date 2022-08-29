@@ -17,6 +17,8 @@ public RouterFunction<ServerResponse> cyclistRouterFunction(CyclistHandler cycli
             .andRoute(GET("/api/cyclist/findbyid/{id}"), cyclistHandler::listenGETFindCyclistByIdUseCase)
             .andRoute(GET("/api/cyclist/findall"), cyclistHandler::listenGETFindAllCyclistUseCase)
             .andRoute(PUT("/api/cyclist/update/{id}"), cyclistHandler::listenPUTUpdateCyclistUseCase)
-            .andRoute(DELETE("/api/cyclist/delete/{id}"), cyclistHandler::listenDELETEDeleteCyclistUseCase);
+            .andRoute(DELETE("/api/cyclist/delete/{id}"), cyclistHandler::listenDELETEDeleteCyclistUseCase)
+            .andRoute(GET("/api/cyclist/findcyclistsbyteam/{id}"), cyclistHandler::listenGETFindCyclistsByTeamIdUseCase)
+            .andRoute(GET("/api/cyclist/findcyclistsbycountry/{id}"), cyclistHandler::listenGETFindCyclistsByCountryIdUseCase);
     }
 }

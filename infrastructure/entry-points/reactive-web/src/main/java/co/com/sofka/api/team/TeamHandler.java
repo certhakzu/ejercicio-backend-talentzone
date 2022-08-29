@@ -5,6 +5,7 @@ import co.com.sofka.usecase.team.createteam.CreateTeamUseCase;
 import co.com.sofka.usecase.team.deleteteam.DeleteTeamUseCase;
 import co.com.sofka.usecase.team.findallteam.FindAllTeamUseCase;
 import co.com.sofka.usecase.team.findteambyid.FindTeamByIdUseCase;
+import co.com.sofka.usecase.team.findteamsbycountryid.FindTeamsByCountryIdUseCase;
 import co.com.sofka.usecase.team.updateteam.UpdateTeamUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -22,6 +23,7 @@ public class TeamHandler {
     private final UpdateTeamUseCase updateTeamUseCase;
     private final FindAllTeamUseCase findAllTeamUseCase;
     private final FindTeamByIdUseCase findTeamByIdUseCase;
+    private final FindTeamsByCountryIdUseCase findTeamsByCountryIdUseCase;
 
     public Mono<ServerResponse> listenPOSTCreateTeamUseCase(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(Team.class)
@@ -56,5 +58,12 @@ public class TeamHandler {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(findTeamByIdUseCase.findTeamById(id), Team.class);
+    }
+
+    public Mono<ServerResponse> listenGETFindTeamsByCountryIdUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findTeamsByCountryIdUseCase.findTeamsByCountryId(id), Team.class);
     }
 }

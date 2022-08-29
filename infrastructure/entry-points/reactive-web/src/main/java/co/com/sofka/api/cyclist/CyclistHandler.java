@@ -5,6 +5,8 @@ import co.com.sofka.usecase.cyclist.createcyclist.CreateCyclistUseCase;
 import co.com.sofka.usecase.cyclist.deletecyclist.DeleteCyclistUseCase;
 import co.com.sofka.usecase.cyclist.findallcyclist.FindAllCyclistUseCase;
 import co.com.sofka.usecase.cyclist.findcyclistbyid.FindCyclistByIdUseCase;
+import co.com.sofka.usecase.cyclist.findcyclistsbycountryid.FindCyclistsByCountryIdUseCase;
+import co.com.sofka.usecase.cyclist.findcyclistsbyteamid.FindCyclistsByTeamIdUseCase;
 import co.com.sofka.usecase.cyclist.updatecyclist.UpdateCyclistUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -22,6 +24,8 @@ public class CyclistHandler {
     private final FindAllCyclistUseCase findAllCyclistUseCase;
     private final UpdateCyclistUseCase updateCyclistUseCase;
     private final DeleteCyclistUseCase deleteCyclistUseCase;
+    private final FindCyclistsByTeamIdUseCase findCyclistsByTeamIdUseCase;
+    private final FindCyclistsByCountryIdUseCase findCyclistsByCountryIdUseCase;
 
 
     public Mono<ServerResponse> listenPOSTCreateCyclistUseCase(ServerRequest serverRequest) {
@@ -59,5 +63,19 @@ public class CyclistHandler {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(deleteCyclistUseCase.deleteCyclist(id), Cyclist.class);
+    }
+
+    public Mono<ServerResponse> listenGETFindCyclistsByTeamIdUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findCyclistsByTeamIdUseCase.findCyclistsByTeamId(id), Cyclist.class);
+    }
+
+    public Mono<ServerResponse> listenGETFindCyclistsByCountryIdUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findCyclistsByCountryIdUseCase.findCyclistsByCountryId(id), Cyclist.class);
     }
 }
