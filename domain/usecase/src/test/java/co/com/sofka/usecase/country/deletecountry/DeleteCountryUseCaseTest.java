@@ -1,6 +1,7 @@
 package co.com.sofka.usecase.country.deletecountry;
 
 
+import co.com.sofka.model.country.Country;
 import co.com.sofka.model.country.gateways.CountryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,8 +23,8 @@ class DeleteCountryUseCaseTest {
 
     @Test
     void deleteCountry() {
-        /*var country = new Country("1", "colombia", "col");
-        var countryMono = Mono.just(country);*/
+        var country = new Country("1", "colombia", "col");
+        /*var countryMono = Mono.just(country);*/
 
         when(countryRepository.deleteById("1")).thenReturn(Mono.empty());
 
