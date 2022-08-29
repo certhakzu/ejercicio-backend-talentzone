@@ -1,15 +1,15 @@
-package co.com.sofka.usecase.createcyclist;
+package co.com.sofka.usecase.cyclist.findallcyclist;
 
 import co.com.sofka.model.cyclist.Cyclist;
 import co.com.sofka.model.cyclist.gateways.CyclistRepository;
 import lombok.RequiredArgsConstructor;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 @RequiredArgsConstructor
-public class CreateCyclistUseCase {
+public class FindAllCyclistUseCase {
     private final CyclistRepository cyclistRepository;
 
-    public Mono<Cyclist> createCyclist(Cyclist cyclist){
-        return cyclistRepository.save(cyclist);
+    public Flux<Cyclist> findAllCyclist(){
+        return cyclistRepository.findAll();
     }
 }

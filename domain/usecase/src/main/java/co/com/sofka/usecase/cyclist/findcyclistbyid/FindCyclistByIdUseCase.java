@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.findcyclistbyid;
+package co.com.sofka.usecase.cyclist.findcyclistbyid;
 
 import co.com.sofka.model.cyclist.Cyclist;
 import co.com.sofka.model.cyclist.gateways.CyclistRepository;
