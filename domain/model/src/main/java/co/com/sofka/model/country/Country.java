@@ -18,6 +18,12 @@ public class Country {
     private List<String> teams;
     private List<String> cyclists;
 
+    public Country(String id, String name, String code) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
